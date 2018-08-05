@@ -1,18 +1,44 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+
+
 class App extends Component {
+  constructor () {
+    super () 
+      this.state= {
+        firesData: []
+      }
+    }
+  getFires = async() => {
+
+    try {
+      
+      const convert = require("xml-js");
+      const xml = await fetch('https://www.geomac.gov/DynContent/georss/nifc_large_firesW3C.xml');
+      const firesJson = await convert.xml2json(xml, {compact: true, spaces: 4});
+      console.log(firesJson);
+    } catch(err) {
+      console.log(err, 'error in catch block')
+      return err
+    }
+  }
+  componentDidMount(){
+    this.getFires().then((data) =>
+      this.setState({
+        firesData: data
+      }))
+
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className="mapContainer">
+        </div>
+
+        <div className="fireContainer">
+        </div>
+       
       </div>
     );
   }

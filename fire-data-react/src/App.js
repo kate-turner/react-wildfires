@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import FireList from './FireList';
 import MapsData from './MapsData';
+import Login from './Login';
+import MainContainer from './MainContainer';
 import NavComponent from './StrapComponents/NavComponent';
 
 
@@ -9,8 +11,11 @@ class App extends Component {
   constructor () {
     super () 
       this.state= {
-        firesData: []
+        firesData: [],
+        logInValid: false, //when logged is false we want to show the login in container, when it is true we want to see our main container
+        username:""
       }
+
     }
   
   getFires = async() => {
@@ -24,6 +29,19 @@ class App extends Component {
       return err
     }
   }
+
+    //this is the LOGIN FUNCTION--> it's giving login/index.js ACCESS to APP.js
+  login = (username) => { 
+    console.log('login function in app is working', username);
+
+    //passing this function down to login
+    //we will setState of this component, but we will call it in the login component
+    this.setState({
+      username: username,
+      logInValid: true
+    });
+        console.log("login function in app is working", username);
+  }
   
   componentDidMount(){
     this.getFires().then((data) => {
@@ -36,9 +54,16 @@ class App extends Component {
     });
   }
   render() {
+    console.log(this.state, " inside of app component");
+    const logInValid = this.state.logInValid; 
+    
     return (
      <div className="container">
       <NavComponent />
+        
+        <div className="login">
+          {this.state.logInValid ? <MainContainer username={this.state.username}/> : <Login login={this.login}/>}
+         </div>
         
         <div className="row">
         <div className="col-md-6 qCont">

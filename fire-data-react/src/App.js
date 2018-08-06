@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import FireList from './FireList';
+import MapsData from './MapsData';
 
 
 
@@ -10,65 +11,39 @@ class App extends Component {
         firesData: []
       }
     }
-  // getFires = async() => {
-
-  //   try {
-
-  //     const convert = require("xml-js");
-  //     const cheerio = require('cheerio');
-  //     const xml = await fetch('https://www.geomac.gov/DynContent/georss/nifc_large_firesW3C.xml');
-  //     const firesJson = await convert.xml2json(xml, {compact: true, spaces: 4});
-  //     console.log(firesJson);
-  //   } catch(err) {
-  //     console.log(err, 'error in catch block')
-  //     return err
-  //   }
-  // }
   
-// request('https://www.geomac.gov/DynContent/georss/nifc_large_firesW3C.xml', function (error, response, html) {
-//   if (!error && response.statusCode == 200) {
-//     var $ = cheerio.load(html);
-//     $('channel').each(function(i, element){
-//       console.log(element);
-//     });
-//   }
-// });
-
-
-
-
-
   getFires = async() => {
-
+    const fireAPI = 'http://api.aerisapi.com/fires/closest?p=denver,co&filter=critical&radius=600miles&from=+2hours&limit=50&&client_id=u42Dr3u5idKSLZQgXmBgx&client_secret=Ir3uVmVdUSDwMRHYVZIcalMRNwFIM1CdsVm3Rcis';
     try {
-      
-      const cheerio = require('cheerio');
-      const data = await fetch ('https://www.geomac.gov/DynContent/georss/nifc_large_firesW3C.xml');
-      const dataLoad = cheerio.load(data, { xmlMode: true });
-      $('channel').each(function(i, element){
-      console.log(element);
-      });
+      const fires = await fetch(fireAPI);
+      const firesJson = await fires.json();
+      return firesJson;
     } catch(err) {
       console.log(err, 'error in catch block')
       return err
     }
   }
-
-
+  
   componentDidMount(){
-    this.getFires().then((data) =>
+    this.getFires().then((data) => {
+      console.log(data, 'this is data')
       this.setState({
-        firesData: data
-      }))
-
+        firesData: data.response
+      })
+    }).catch((err) => {
+      console.log(err)
+    });
   }
   render() {
     return (
       <div className="App">
         <div className="mapContainer">
+        <MapsData firesData={this.state.firesData} />
+
         </div>
 
         <div className="fireContainer">
+        <FireList firesData={this.state.firesData} />
         </div>
        
       </div>

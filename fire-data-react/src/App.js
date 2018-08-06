@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FireList from './FireList';
 import MapsData from './MapsData';
+import NavComponent from './StrapComponents/NavComponent';
 
 
 
@@ -36,16 +37,23 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
+     <div className="container">
+      <NavComponent />
+        
+        <div className="row">
+        <div className="col-md-6 qCont">
         <div className="mapContainer">
         <MapsData firesData={this.state.firesData} />
-
         </div>
-
-        <div className="fireContainer">
-        <FireList firesData={this.state.firesData} />
         </div>
-       
+        
+        
+        <div className="col-md-6 qCont">
+          <div className="fireContainer">
+            <FireList firesData={this.state.firesData} />
+          </div>
+        </div>
+        </div>
       </div>
     );
   }

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 
-class Fire extends Component {
+ const Fire = () => {
+ 	const fireList = props.fires.map
 
 	return (
 		<div>

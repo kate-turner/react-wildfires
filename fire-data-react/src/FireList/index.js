@@ -6,9 +6,7 @@ render(){
 	let fireList = this.props.firesData.map((fire, index) => {
 		return <li key={index}>
 			{fire.report.name}
-			{fire.loc.long}
-			{fire.loc.lat}
-		</li>
+				</li>
 		})
 
 		return (

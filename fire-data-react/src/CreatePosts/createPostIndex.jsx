@@ -19,6 +19,7 @@ class CreatePosts extends Component {
   render(){
     console.log(this.props, ' this is props')
   return (
+    <h1> this is the new posts page </h1>
     <form onSubmit={this.props.addPosts.bind(this, this.state)}>
       <label>
         Post:

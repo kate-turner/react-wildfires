@@ -38,12 +38,6 @@ export class MapContainer extends Component {
 
 }
 
-// const LoadingContainer = (props) => {
-//   <div >
-//     <img src={'../public/images/throbber.gif'} alt="Loading..."/>
-//   </div>
-// }
-
 export default GoogleApiWrapper({
   apiKey: ('AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg')
 

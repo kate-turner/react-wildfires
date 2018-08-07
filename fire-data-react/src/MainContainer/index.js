@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import FireList from '../FireList';
 import MapsData from '../MapsData';
 import Posts from '../Posts/postsIndex';
+import CreatePosts from '../CreatePosts/createPostIndex'
 
 
 class MainContainer extends Component{
@@ -22,9 +23,16 @@ class MainContainer extends Component{
           firesData: data.response
         })
       }).catch((err) => {
-        console.log(err)
+        console.log(err, 'in fires data api')
       });
-    }
+       this.getPosts().then((response) => {
+      console.log(response)
+      this.setState({
+        posts: response.data})
+    }).catch((err) => {
+      console.log(err, 'in posts data api');
+    })
+  }
 
     getFires = async() => {
       const fireAPI = 'http://api.aerisapi.com/fires/closest?p=denver,co&filter=critical&radius=600miles&from=+2hours&limit=50&&client_id=u42Dr3u5idKSLZQgXmBgx&client_secret=Ir3uVmVdUSDwMRHYVZIcalMRNwFIM1CdsVm3Rcis';
@@ -39,21 +47,31 @@ class MainContainer extends Component{
       }
     }
 
-  componentDidMount(){
-    this.getPosts().then((response) => {
-      console.log(response)
-      this.setState({
-        posts: response.data})
-    }).catch((err) => {
-      console.log(err);
-    })
-  }
-  getPosts = async () => {
-
+    getPosts = async () => {
     const posts = await fetch('http://localhost:9000/posts');
     const postsJson = await posts.json();
     return postsJson;
+    }
+
+    addPost = async (post, e) => {
+    e.preventDefault();
+    try {
+        const createdPost = await fetch('http://localhost:9000/posts', {
+          method: 'POST',
+          body: JSON.stringify(post),
+          headers:{
+            'Content-Type': 'application/json'
+          }
+        });
+
+        const parsedResponse = await createdPost.json();
+        this.setState({posts: [...this.state.posts, parsedResponse.data]});
+
+    } catch(err) {
+      console.log(err)
+    }
   }
+
 
 
   
@@ -76,6 +94,7 @@ class MainContainer extends Component{
 
             <div>
               <Posts posts={this.state.posts}/> 
+              <CreatePosts posts={this.state.posts}/>
             </div>
             
             </div>

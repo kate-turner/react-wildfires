@@ -10,27 +10,29 @@ class CreatePosts extends Component {
       body: ''
     }
   }
-  updatePosts = (e) => {
+  addPosts = (e) => {
 
     this.setState({[e.currentTarget.name]: e.currentTarget.value});
 
   }
 
   render(){
-    console.log(this.props, ' this is props')
+    console.log(this.props, ' this is props in createPostIndex')
   return (
+  <div>
     <h1> this is the new posts page </h1>
-    <form onSubmit={this.props.addPosts.bind(this, this.state)}>
+    <form onSubmit={this.addPosts.bind(this, this.state)}>
       <label>
         Post:
-        <input type="text" name="title" onChange={this.updatePosts}/>
+        <input type="text" name="title" onChange={this.addPosts}/>
       </label>
       <label>
         Create Content:
-        <textarea name="body" onChange={this.updatePosts}/>
+        <textarea name="body" onChange={this.addPosts}/>
       </label>
       <input type='Submit' value="Publish Post"/>
     </form>
+  </div>
 
     )
   }

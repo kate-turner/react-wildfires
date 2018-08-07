@@ -19,6 +19,7 @@ class MainContainer extends Component{
 
     componentDidMount(){
       this.getFires().then((data) => {
+        console.log(data)
         this.setState({
           firesData: data.response
         })
@@ -54,6 +55,7 @@ class MainContainer extends Component{
     }
 
     addPost = async (post, e) => {
+      console.log(post, 'from addPost')
     e.preventDefault();
     try {
         const createdPost = await fetch('http://localhost:9000/posts', {
@@ -65,12 +67,25 @@ class MainContainer extends Component{
         });
 
         const parsedResponse = await createdPost.json();
+        if(parsedResponse.status === 200){
         this.setState({posts: [...this.state.posts, parsedResponse.data]});
-
+        }else{
+          console.log(parsedResponse)
+        }
     } catch(err) {
       console.log(err)
     }
+  
+
+
+
+
   }
+
+
+
+
+
 
 
 
@@ -94,7 +109,7 @@ class MainContainer extends Component{
 
             <div>
               <Posts posts={this.state.posts}/> 
-              <CreatePosts posts={this.state.posts}/>
+              <CreatePosts addPost={this.addPost}/>
             </div>
             
             </div>

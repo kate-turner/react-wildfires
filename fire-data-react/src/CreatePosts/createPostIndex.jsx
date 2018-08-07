@@ -10,7 +10,7 @@ class CreatePosts extends Component {
       body: ''
     }
   }
-  addPosts = (e) => {
+  handleChange = (e) => {
 
     this.setState({[e.currentTarget.name]: e.currentTarget.value});
 
@@ -21,14 +21,14 @@ class CreatePosts extends Component {
   return (
   <div>
     <h1> this is the new posts page </h1>
-    <form onSubmit={this.addPosts.bind(this, this.state)}>
+    <form onSubmit={this.props.addPost.bind(this, this.state)}>
       <label>
-        Post:
-        <input type="text" name="title" onChange={this.addPosts}/>
+        <p> Post:</p>
+        <input type="text" name="title" onChange={this.handleChange}/>
       </label>
       <label>
-        Create Content:
-        <textarea name="body" onChange={this.addPosts}/>
+        <p> Create Content: </p>
+        <textarea name="body" onChange={this.handleChange}/>
       </label>
       <input type='Submit' value="Publish Post"/>
     </form>

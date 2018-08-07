@@ -2,8 +2,8 @@ import React from 'react';
 
 
 const Posts = (props) => {
-  console.log(props);
-  const postsList = props.posts.map((post, i ) => {
+  console.log(props, 'this is props in post index');
+  const postsList = props.posts.map((post, i) => {
     return (
       <li key={post._id}>
         <span>{post.title}</span><br/>

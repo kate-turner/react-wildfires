@@ -28,7 +28,7 @@ class CreatePosts extends Component {
       </label>
       <label>
         <p> Create Content: </p>
-        <textarea name="body" onChange={this.handleChange}/>
+        <input type="text" name="body" onChange={this.handleChange}/>
       </label>
       <input type='Submit' value="Publish Post"/>
     </form>

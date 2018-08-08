@@ -24,7 +24,7 @@ export class MapContainer extends Component {
             lat: 37.78,
             lng: -122.44
         }}
-        style={{width: '100%', height: '80%'}}
+        style={{width: '50%', height: '50%'}}
         zoom={2}
         onClick={this.onMapClicked}>
 

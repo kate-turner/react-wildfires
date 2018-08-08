@@ -8,8 +8,10 @@ const Posts = (props) => {
       <li key={post._id}>
         <span>{post.title}</span><br/>
         <textarea>{post.body}</textarea>
-    </li>)
-  })
+        <button onClick={props.deletePosts.bind(null, post._id)}>Delete</button>
+    </li>
+    )
+  });
 
   return (
     <div>
@@ -21,7 +23,5 @@ const Posts = (props) => {
     )
 
 };
-//using .bind in order to pass the posts._id when the onClick listener is triggered
 
 export default Posts;
-

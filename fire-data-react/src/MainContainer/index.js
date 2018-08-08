@@ -75,20 +75,49 @@ class MainContainer extends Component{
     } catch(err) {
       console.log(err)
     }
-  
-
-
-
-
   }
 
+  // deletePosts = async (id, e) => {
+  // e.preventDefault();
+  // console.log('deletePosts function is being called, this is the id: ', id);
+  //   try {
+  //     const deletePosts = await fetch('http://localhost:9000/posts' + id, {
+  //       method: "DELETE",
+  //     });
+  //     console.log('inside try')
+  //     const deletePostJson = await deletePosts.json();
+  //     if(deletePostJson === 200){
+  //       this.setState({posts: this.state.posts.filter((post, id) => post._id !== id)});
+  //     } else {
+  //       console.log('problem in deletePosts')
+  //     }
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
+  deletePosts = async (id, e) => {
+  console.log(id, "this is id of the post to be deleted")
 
+  e.preventDefault();
+    try {
+      const deletePosts = await fetch('http://localhost:9000/posts' + id, {
+        method: "DELETE"
+      });
 
+      const parsedResponse = await deletePosts.json();
+      if(parsedResponse.status === 200){
+      } else {
+        console.log("something bad happened.")
+      }
 
+      this.setState({posts: this.state.posts.filter((post, i) => post._id !== id)});
 
-
-
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  
   
       render(){
         return (
@@ -108,7 +137,7 @@ class MainContainer extends Component{
             </div> 
 
             <div>
-              <Posts posts={this.state.posts}/> 
+              <Posts posts={this.state.posts} deletePosts={this.deletePosts} /> 
               <CreatePosts addPost={this.addPost}/>
             </div>
             

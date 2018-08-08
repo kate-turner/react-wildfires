@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 class CreatePosts extends Component {
   constructor(){
     super();
@@ -19,6 +18,7 @@ class CreatePosts extends Component {
   render(){
     console.log(this.props, ' this is props')
   return (
+    <div>
     <h1> this is the new posts page </h1>
     <form onSubmit={this.props.addPosts.bind(this, this.state)}>
       <label>
@@ -31,9 +31,8 @@ class CreatePosts extends Component {
       </label>
       <input type='Submit' value="Publish Post"/>
     </form>
-
-    )
+    </div>
+  )
   }
 }
-
 export default CreatePosts;

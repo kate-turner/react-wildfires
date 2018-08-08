@@ -21,9 +21,16 @@ class MainContainer extends Component{
         this.setState({
           firesData: data.response
         })
-      }).catch((err) => {
-        console.log(err)
-      });
+        }).catch((err) => {
+          console.log(err, 'in fires data api')
+        });
+        this.getPosts().then((response) => {
+        console.log(response)
+        this.setState({
+          posts: response.data})
+        }).catch((err) => {
+        console.log(err, 'in posts data api');
+      })
     }
 
     getFires = async() => {
@@ -39,15 +46,6 @@ class MainContainer extends Component{
       }
     }
 
-  componentDidMount(){
-    this.getPosts().then((response) => {
-      console.log(response)
-      this.setState({
-        posts: response.data})
-    }).catch((err) => {
-      console.log(err);
-    })
-  }
   getPosts = async () => {
 
     const posts = await fetch('http://localhost:9000/posts');
@@ -55,7 +53,49 @@ class MainContainer extends Component{
     return postsJson;
   }
 
+  addPost = async (post, e) => {
+    console.log(post, 'from addPost')
+  e.preventDefault();
+  try {
+      const createdPost = await fetch('http://localhost:9000/posts', {
+        method: 'POST',
+        body: JSON.stringify(post),
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      });
 
+      const parsedResponse = await createdPost.json();
+      if(parsedResponse.status === 200){
+      this.setState({posts: [...this.state.posts, parsedResponse.data]});
+      }else{
+        console.log(parsedResponse)
+      }
+  } catch(err) {
+    console.log(err)
+  }
+}
+
+deletePosts = async (id, e) => {
+  console.log(id, "this is id of the post to be deleted")
+  e.preventDefault();
+    try {
+      const deletePosts = await fetch('http://localhost:9000/posts' + id, {
+        method: "DELETE"
+      });
+
+      const parsedResponse = await deletePosts.json();
+      if(parsedResponse.status === 200){
+      } else {
+        console.log("something bad happened.")
+      }
+      this.setState({posts: this.state.posts.filter((post, i) => post._id !== id)});
+
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  
   
       render(){
         return (
@@ -75,7 +115,8 @@ class MainContainer extends Component{
             </div> 
 
             <div>
-              <Posts posts={this.state.posts}/> 
+              <Posts posts={this.state.posts} deletePosts={this.deletePosts} /> 
+              <CreatePosts addPost={this.addPost}/>
             </div>
             
             </div>

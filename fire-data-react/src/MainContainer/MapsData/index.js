@@ -21,11 +21,11 @@ export class MapContainer extends Component {
       <div className="mapContainer">
         <Map google={this.props.google}
           initialCenter={{
-            lat: 37.78,
-            lng: -122.44
+            lat: 39.73,
+            lng: -104.99
         }}
         style={{width: '50%', height: '50%'}}
-        zoom={2}
+        zoom={4}
         onClick={this.onMapClicked}>
 
         {fireMarkers}

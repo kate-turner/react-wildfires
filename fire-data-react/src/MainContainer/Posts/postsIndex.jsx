@@ -9,6 +9,7 @@ const Posts = (props) => {
         <span>{post.title}</span><br/>
         <textarea>{post.body}</textarea>
         <button onClick={props.deletePosts.bind(null, post._id)}>Delete</button>
+        <button onClick={props.showModal.bind(null, post._id)}>Edit</button>
     </li>
     )
   });

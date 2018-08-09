@@ -9,11 +9,11 @@ const EditPosts = (props) =>  {
       <form onSubmit={props.closeAndEdit}>
         <label>
           Edit Post Title:
-          <input type="text" name="title" onChange={props.handleFormChange} value={props.postsToEdit.title}/>
+          <input type="text" name="title" onChange={props.handleFormChange} value={props.postToEdit.title}/>
         </label>
         <label>
           Edit Content:
-          <textarea type="text" name="body" onChange={props.handleFormChange} value={props.postsToEdit.body}/>
+          <textarea type="text" name="body" onChange={props.handleFormChange} value={props.postToEdit.body}/>
         </label>
         <input type='Submit'/>
       </form>

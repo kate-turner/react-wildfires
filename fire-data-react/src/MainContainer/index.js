@@ -2,7 +2,8 @@ import React, {Component} from "react";
 import FireList from '../FireList';
 import MapsData from '../MapsData';
 import Posts from '../Posts/postsIndex';
-import CreatePosts from '../CreatePosts/createPostIndex'
+import CreatePosts from '../CreatePosts/createPostIndex';
+import EditPosts from '../EditPosts/editPostsIndex';
 
 
 class MainContainer extends Component{
@@ -13,6 +14,12 @@ class MainContainer extends Component{
         this.state = {
             firesData: [],
             posts: [],
+            showEdit: false,
+            editPostId: null,
+            postToEdit: {
+              title: '',
+              body: ''
+            }
            
         }
     }
@@ -54,6 +61,22 @@ class MainContainer extends Component{
     return postsJson;
     }
 
+    // Integrating Fire API into database
+    // addFirePost = async (e) => {
+    //   //this needs to match our schema key
+    //   const firePostCreate = {"id": this.state.id}
+    //   e.preventDefault();
+    //   try{
+    //     const createdAddFirePost = await fetch('http://localhost:9000/posts', {
+    //       method: 'POST',
+    //       body: JSON.stringify(firePostCreate),
+    //       headers:{
+    //         'Content-Type': 'application/json'
+    //       }
+    //     });
+    //   }
+    // }
+
     addPost = async (post, e) => {
       console.log(post, 'from addPost')
     e.preventDefault();
@@ -82,14 +105,13 @@ class MainContainer extends Component{
 
   e.preventDefault();
     try {
-      //make a variable with the properties we expect req.body to have
       const deletePosts = await fetch('http://localhost:9000/posts/' + id, {
         method: "DELETE",
-        credentials: "include",
+        credentials: 'include',
         body: JSON.stringify({"id": id}),
-        headers:{
-            'Content-Type': 'application/json'
-          }
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
 
       const parsedResponse = await deletePosts.json();
@@ -104,6 +126,61 @@ class MainContainer extends Component{
       console.log(err)
     }
   }
+
+ 
+  showModal = (id) => {
+
+    // find method returns the object that meets the condition,
+    // and so the movieToEdit variable will contain the movie want to edit (the actual
+    //object)
+    const postToEdit = this.state.posts.find((post) => post._id === id);
+
+    this.setState({
+      showEdit: true,
+      editPostId: id,
+      postToEdit: postToEdit
+    });
+
+  }
+  closeAndEdit = async (e) => {
+    e.preventDefault();
+    try {
+      const postToEdit = this.state.postToEdit
+      const editResponse = await fetch('http://localhost:9000/posts/' + this.state.editPostId, {
+        method: 'PUT',
+        credentials: 'include',
+        body: JSON.stringify(postToEdit),
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      });
+      const editResponseJson = await editResponse.json();
+      const editedPostArray = this.state.posts.map((post) => {
+        if(post._id === this.state.editPostId){
+          post.title = editResponseJson.data.title;
+          post.body = editResponseJson.data.body;
+        }
+        return post
+      });
+
+      this.setState({
+        post: editedPostArray,
+        showEdit: false
+      });
+    }catch(err) {
+      console.log(err)
+    }
+
+  }
+  handleFormChange = (e) => {
+    this.setState({
+      postToEdit: {
+        ...this.state.postToEdit,
+        [e.target.name]: e.target.value
+      }
+    });
+  }
+  
   
   
       render(){
@@ -124,8 +201,10 @@ class MainContainer extends Component{
             </div> 
 
             <div>
-              <Posts posts={this.state.posts} deletePosts={this.deletePosts} /> 
+              <Posts posts={this.state.posts} deletePosts={this.deletePosts} showModal={this.showModal} /> 
               <CreatePosts addPost={this.addPost}/>
+
+              {this.state.showEdit ? <EditPosts closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} postToEdit={this.state.postToEdit}/> : null}
             </div>
             
             </div>

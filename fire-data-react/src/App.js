@@ -3,21 +3,19 @@ import './App.css';
 import MainContainer from './MainContainer';
 import NavComponent from './StrapComponents/NavComponent';
 import './App.css';
+import { Container, Row, Col } from 'reactstrap';
 
 class App extends Component {
   render() {
     return (
    
       
-      <div className="container-fluid">
-      <div>
+      
+    <Container>
       <NavComponent />
-      </div>
-
-       <div className="row">
         <MainContainer/>
-       </div>
-      </div>
+    </Container>
+      
   
     );
   }

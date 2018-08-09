@@ -4,6 +4,7 @@ import MapsData from './MapsData';
 import Posts from './Posts/postsIndex';
 import CreatePosts from './CreatePosts/createPostIndex';
 import EditPosts from './EditPosts/editPostsIndex';
+import { Container, Row, Col } from 'reactstrap';
 
 
 class MainContainer extends Component{
@@ -186,31 +187,39 @@ class MainContainer extends Component{
   
       render(){
         return (
+          <Container>
+            <Row>
 
-            <div className="row">
-
-            
-            <div className="col-md-6 qCont">
+            <Col md="6">
             <div className="mapContainer">
             <MapsData firesData={this.state.firesData} />
             </div>
-            </div>
-            
-            
-            <div className="col-md-6 qCont">
-            <div className="fireContainer">
-              <FireList firesData={this.state.firesData} />
-            </div>
-            </div> 
+            </Col>
 
-            <div>
+            <Col xs="6">
+            <FireList firesData={this.state.firesData} />
+            </Col>
+            </Row>
+
+            
+            
+            
+          
+            <Row>
+            <Col md="6">
               <Posts posts={this.state.posts} deletePosts={this.deletePosts} showModal={this.showModal} /> 
-              <CreatePosts addPost={this.addPost}/>
-
-              {this.state.showEdit ? <EditPosts closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} postToEdit={this.state.postToEdit}/> : null}
-            </div>
+            </Col>
             
-            </div>
+            <Col xs="6">
+              <CreatePosts addPost={this.addPost}/>
+            </Col>
+            </Row>
+
+           
+              {this.state.showEdit ? <EditPosts closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} postToEdit={this.state.postToEdit}/> : null}
+          </Container>
+        
+            
         )
       }
 } 

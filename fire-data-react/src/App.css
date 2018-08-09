@@ -1,4 +1,28 @@
-.App_mapContainer {
-  height: 500px;
-  width: 500px;
+
+
+body {
+ background: pink;
+  margin: 0px auto;
+  text-align: center;
+  font-size: 10px;
+}
+
+
+
+.app {
+ 
+}
+
+.mapContainer {
+   width: 400px;
+   height: 400px;
+   margin: 100px;
+}
+
+.quakeContainer {
+
+}
+
+.rows {
+
 }

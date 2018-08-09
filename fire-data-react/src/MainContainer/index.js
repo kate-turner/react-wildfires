@@ -1,9 +1,9 @@
 import React, {Component} from "react";
-import FireList from '../FireList';
-import MapsData from '../MapsData';
-import Posts from '../Posts/postsIndex';
-import CreatePosts from '../CreatePosts/createPostIndex';
-import EditPosts from '../EditPosts/editPostsIndex';
+import FireList from './FireList';
+import MapsData from './MapsData';
+import Posts from './Posts/postsIndex';
+import CreatePosts from './CreatePosts/createPostIndex';
+import EditPosts from './EditPosts/editPostsIndex';
 
 
 class MainContainer extends Component{
@@ -185,7 +185,9 @@ class MainContainer extends Component{
   
       render(){
         return (
+
             <div className="row">
+              
             
             <div className="col-md-6 qCont">
             <div className="mapContainer">

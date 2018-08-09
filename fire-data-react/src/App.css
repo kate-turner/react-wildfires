@@ -5,24 +5,52 @@
     -webkit-overflow-scrolling: touch;
 }
 
+.list-group-item{
+  list-style-type: none;
+}
 
+#result_panel{
+  height: 310px;
+  width: 200px;
+  text-align: center;
+  margin-top: 50px;
+}
+#id_panel{
+  height: 400px;
+  width: 350px;
+}
+
+.createPost{
+background-color: #ffdb99;
+height: 200px;
+width: 200px;
+}
 .container {
   background-color:  #e6f5ff;
 }
 
-
+.posts2 {
+  text-align: center;
+  display: inline-block;
+}
 
 .app {
  
 }
 
 .mapContainer {
-   width: 400px;
-   height: 400px;
-   margin: 100px;
+  text-align: center;
+   width: 10%;
+   height: 10%;
+   margin: 10%;
 }
-
-
+.post-span {
+  font-size: 25px;
+}
+.post-body {
+  font-size: 16px;
+  color: red;
+}
 
 .rows {
 

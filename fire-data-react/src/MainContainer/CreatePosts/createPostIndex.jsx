@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 
 class CreatePosts extends Component {
@@ -19,20 +20,22 @@ class CreatePosts extends Component {
   render(){
     console.log(this.props, ' this is props in createPostIndex')
   return (
-  <div>
-    <h1> this is the new posts page </h1>
-    <form onSubmit={this.props.addPost.bind(this, this.state)}>
-      <label>
-        <p> Post:</p>
+  
+<div className="posts2">
+    <Form className="posts2" onSubmit={this.props.addPost.bind(this, this.state)}>
+      <FormGroup className="createPost">
+        <Label for="titleTextHeader">Title</Label>
         <input type="text" name="title" onChange={this.handleChange}/>
-      </label>
-      <label>
-        <p> Create Content: </p>
-        <textarea type="text" name="body" onChange={this.handleChange}/>
-      </label>
-      <input type='Submit' value="Publish Post"/>
-    </form>
-  </div>
+        <br></br>
+        <Label for="contentTextHeader">Create content</Label>
+        <input type="textarea" name="body" onChange={this.handleChange}/>
+        <br></br>
+        <Button type='Submit'>Create New Post</Button>
+      </FormGroup>
+    </Form>
+    </div>
+    
+  
 
     )
   }

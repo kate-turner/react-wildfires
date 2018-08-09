@@ -196,21 +196,21 @@ class MainContainer extends Component{
             </div>
             </Col>
 
-            <Col xs="6">
+            <Col md="6">
             <FireList firesData={this.state.firesData} />
             </Col>
-            </Row>
+            </Row><br/><br/>
 
             
             
             
           
             <Row>
-            <Col md="6">
+            <Col xs="6" className="posts">
               <Posts posts={this.state.posts} deletePosts={this.deletePosts} showModal={this.showModal} /> 
             </Col>
             
-            <Col xs="6">
+            <Col xs="6" className="posts2"><br/><br/>
               <CreatePosts addPost={this.addPost}/>
             </Col>
             </Row>

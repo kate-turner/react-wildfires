@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 
+
 class FireList extends Component {
 render(){
 	let fireList = this.props.firesData.map((fire, index) => {
@@ -10,7 +11,7 @@ render(){
 		})
 
 		return (
-
+			
 		<div class="panel panel-primary" id="result_panel">
     		<div class="panel-heading">
     			<h3 class="panel-title">Fire List</h3>
@@ -18,8 +19,8 @@ render(){
     
     	<div class="panel-body">
         	<ul class="list-group">
-            	<li class="list-group-item"><strong>
-            	{fireList}</strong></li>
+            	<li class="list-group-item">
+            	{fireList}</li>
             </ul>
         </div>
         </div>

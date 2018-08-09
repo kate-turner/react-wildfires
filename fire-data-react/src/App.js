@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import MainContainer from './MainContainer';
 import NavComponent from './StrapComponents/NavComponent';
-// import { Route, Switch } from 'react-router-dom';
+//import { Route, Switch } from 'react-router-dom';
 
 
 // const My404 = () => {
@@ -13,12 +13,11 @@ import NavComponent from './StrapComponents/NavComponent';
 //     )
 // };
 
-// const AppRoutes = () => {
+// const App = () => {
 //   return (
 //     <main>
 //       <Switch>
-        
-//         <Route exact path="/" component={ MainContainer } />
+//         <Route exact path="/posts" component={ MainContainer } />
 //         <Route component={My404} />
 //       </Switch>
 //     </main>

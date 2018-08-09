@@ -77,32 +77,19 @@ class MainContainer extends Component{
     }
   }
 
-  // deletePosts = async (id, e) => {
-  // e.preventDefault();
-  // console.log('deletePosts function is being called, this is the id: ', id);
-  //   try {
-  //     const deletePosts = await fetch('http://localhost:9000/posts' + id, {
-  //       method: "DELETE",
-  //     });
-  //     console.log('inside try')
-  //     const deletePostJson = await deletePosts.json();
-  //     if(deletePostJson === 200){
-  //       this.setState({posts: this.state.posts.filter((post, id) => post._id !== id)});
-  //     } else {
-  //       console.log('problem in deletePosts')
-  //     }
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-
   deletePosts = async (id, e) => {
   console.log(id, "this is id of the post to be deleted")
 
   e.preventDefault();
     try {
-      const deletePosts = await fetch('http://localhost:9000/posts' + id, {
-        method: "DELETE"
+      //make a variable with the properties we expect req.body to have
+      const deletePosts = await fetch('http://localhost:9000/posts/' + id, {
+        method: "DELETE",
+        credentials: "include",
+        body: JSON.stringify({"id": id}),
+        headers:{
+            'Content-Type': 'application/json'
+          }
       });
 
       const parsedResponse = await deletePosts.json();
@@ -110,10 +97,10 @@ class MainContainer extends Component{
       } else {
         console.log("something bad happened.")
       }
-
+      
       this.setState({posts: this.state.posts.filter((post, i) => post._id !== id)});
 
-    } catch (err) {
+    } catch (err) { 
       console.log(err)
     }
   }

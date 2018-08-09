@@ -4,7 +4,7 @@ body {
   font-family: sans-serif;
 }
 
-.mapContainer {
-  height: 500px;
-  width: 500px;
+.navbar-img {
+	height: 80px;
+	width: 80px;
 }

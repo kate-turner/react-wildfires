@@ -156,9 +156,10 @@ class MainContainer extends Component{
       });
       const editResponseJson = await editResponse.json();
       const editedPostArray = this.state.posts.map((post) => {
+        console.log(post.body, 'this is the post body in edit response')
         if(post._id === this.state.editPostId){
-          post.title = editResponseJson.data.title;
-          post.body = editResponseJson.data.body;
+          post.title = this.editResponseJson.data.title;
+          post.body = this.editResponseJson.data.body;
         }
         return post
       });
@@ -187,7 +188,7 @@ class MainContainer extends Component{
         return (
 
             <div className="row">
-              
+
             
             <div className="col-md-6 qCont">
             <div className="mapContainer">

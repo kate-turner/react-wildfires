@@ -4,3 +4,7 @@ body {
   font-family: sans-serif;
 }
 
+.navbar-img {
+	height: 80px;
+	width: 80px;
+}

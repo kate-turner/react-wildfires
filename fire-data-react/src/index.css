@@ -8,6 +8,9 @@ body {
 	height: 50px;
 	width: 50px;
 }
+.ml-auto {
+	font-weight: bold;
+}
 
 .FormGroup {
 	background-color: pink;

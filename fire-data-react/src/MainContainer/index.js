@@ -188,6 +188,8 @@ class MainContainer extends Component{
       render(){
         return (
           <Container>
+          
+          
             <Row>
 
             <Col md="6">
@@ -215,10 +217,11 @@ class MainContainer extends Component{
             <Col xs="6" className="posts2"><br/><br/>
               <CreatePosts addPost={this.addPost}/>
             </Col>
-            </Row>
 
-           
-              {this.state.showEdit ? <EditPosts closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} postToEdit={this.state.postToEdit}/> : null}
+            </Row>
+             
+             {this.state.showEdit ? <EditPosts closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} postToEdit={this.state.postToEdit}/> : null}
+          <img className="header-image" src={"/images/icon-name.png"}/>
           </Container>
         
             

@@ -34,8 +34,6 @@ class CreatePosts extends Component {
       </FormGroup>
     </Form>
     </div>
-    
-  
 
     )
   }

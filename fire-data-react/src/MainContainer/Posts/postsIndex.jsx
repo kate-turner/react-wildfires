@@ -15,9 +15,6 @@ const Posts = (props) => {
   });
 
   return (
-
- 
-
       <div class="panel panel-primary" id="post_panel">
         <div class="panel-heading">
           <h3 class="panel-title">Posts</h3>
@@ -30,7 +27,6 @@ const Posts = (props) => {
             </ul>
         </div>
         </div>
-
     )
 
 };

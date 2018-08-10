@@ -120,10 +120,10 @@ class MainContainer extends Component{
       } else {
         console.log("something bad happened.")
       }
-
+      
       this.setState({posts: this.state.posts.filter((post, i) => post._id !== id)});
 
-    } catch (err) {
+    } catch (err) { 
       console.log(err)
     }
   }
@@ -196,8 +196,10 @@ class MainContainer extends Component{
             </div>
             </Col>
 
-            <Col md="6">
+            <Col xs="6">
+            <div className="fireContainer">
             <FireList firesData={this.state.firesData} />
+            </div>
             </Col>
             </Row><br/><br/>
 
@@ -206,7 +208,7 @@ class MainContainer extends Component{
             
           
             <Row>
-            <Col xs="6" className="posts">
+            <Col md="6" className="posts">
               <Posts posts={this.state.posts} deletePosts={this.deletePosts} showModal={this.showModal} /> 
             </Col>
             

@@ -26,9 +26,9 @@ class CreatePosts extends Component {
       <FormGroup className="createPost">
         <Label for="titleTextHeader">Title</Label>
         <input type="text" name="title" onChange={this.handleChange}/>
-        <br></br>
         <Label for="contentTextHeader">Create content</Label>
         <input type="textarea" name="body" onChange={this.handleChange}/>
+        <br></br>
         <br></br>
         <Button type='Submit'>Create New Post</Button>
       </FormGroup>

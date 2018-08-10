@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Button } from 'reactstrap';
 
 const Posts = (props) => {
   console.log(props, 'this is props in post index');
@@ -8,8 +8,8 @@ const Posts = (props) => {
       <li key={post._id}>
         <span className="post-span">{post.title}</span><br/>
         <p className="post-body">{post.body}</p>
-        <button onClick={props.deletePosts.bind(null, post._id)}>Delete</button>
-        <button onClick={props.showModal.bind(null, post._id)}>Edit</button><br/><br/>
+        <Button onClick={props.deletePosts.bind(null, post._id)}>Delete</Button>
+        <Button onClick={props.showModal.bind(null, post._id)}>Edit</Button><br/><br/>
     </li>
     )
   });

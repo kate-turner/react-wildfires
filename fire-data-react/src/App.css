@@ -19,20 +19,56 @@
   height: 400px;
   width: 350px;
 }
+#post_panel {
+  background-color:  #f2f9ec;
+}
+
+.btn {
+  margin: 5px;
+}
 
 .createPost{
 background-color: #ffdb99;
-height: 200px;
+padding-bottom: 20px;
+height: 250px;
 width: 200px;
 }
+label {
+  margin: 10px;
+  font-size: 20px;
+}
+
+
 .container {
   background-color:  #e6f5ff;
+  padding-bottom: 15px;
+  justify-content: center;
 }
 
 .posts2 {
   text-align: center;
-  display: inline-block;
+  align-self: right;
+  justify-content: center;
+  border-color: #bfdf9f;
+
+
 }
+
+.posts {
+ 
+  text-align: center;
+  display: inline-block;
+  width: 100px;
+  justify-content: center;
+  
+}
+.row {
+  
+  flex-direction: row;
+  justify-content: center;
+
+}
+
 
 .app {
  
@@ -40,9 +76,21 @@ width: 200px;
 
 .mapContainer {
   text-align: center;
-   width: 10%;
-   height: 10%;
-   margin: 10%;
+  width: 260px;
+   height: 50%;
+   width: 50%;
+
+   margin: 30px;
+   flex-direction: row;
+}
+.fireContainer {
+ 
+  align-items: center;
+  margin-left: 100px;
+  text-align: center;
+  width: 260px;
+  /*background-color: pink;*/
+
 }
 .post-span {
   font-size: 25px;
@@ -51,7 +99,8 @@ width: 200px;
   font-size: 16px;
   color: red;
 }
-
-.rows {
-
+p{
+ font-family: 'Lato', sans-serif;
 }
+
+

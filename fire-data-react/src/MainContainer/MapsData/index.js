@@ -13,6 +13,7 @@ export class MapContainer extends Component {
           lat: fire.loc.lat,
           lng: fire.loc.long
         }}
+        style={{width: '50%', height: '50%'}}
       />
     )
   )

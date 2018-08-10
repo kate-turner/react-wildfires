@@ -16,11 +16,13 @@ const Posts = (props) => {
 
   return (
     <div>
-    <h1> This is our Posts page! </h1>
-    <ul>
-      {postsList}
-    </ul>
+      <span>
+        <ul>
+          {postsList}
+        </ul>
+      </span>
     </div>
+
     )
 
 };

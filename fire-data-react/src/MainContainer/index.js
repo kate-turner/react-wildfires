@@ -6,6 +6,7 @@ import CreatePosts from './CreatePosts/createPostIndex';
 import EditPosts from './EditPosts/editPostsIndex';
 
 
+
 class MainContainer extends Component{
 
     constructor(){
@@ -20,7 +21,6 @@ class MainContainer extends Component{
               title: '',
               body: ''
             }
-           
         }
     }
 
@@ -61,21 +61,6 @@ class MainContainer extends Component{
     return postsJson;
     }
 
-    // Integrating Fire API into database
-    // addFirePost = async (e) => {
-    //   //this needs to match our schema key
-    //   const firePostCreate = {"id": this.state.id}
-    //   e.preventDefault();
-    //   try{
-    //     const createdAddFirePost = await fetch('http://localhost:9000/posts', {
-    //       method: 'POST',
-    //       body: JSON.stringify(firePostCreate),
-    //       headers:{
-    //         'Content-Type': 'application/json'
-    //       }
-    //     });
-    //   }
-    // }
 
     addPost = async (post, e) => {
       console.log(post, 'from addPost')
@@ -130,9 +115,6 @@ class MainContainer extends Component{
  
   showModal = (id) => {
 
-    // find method returns the object that meets the condition,
-    // and so the movieToEdit variable will contain the movie want to edit (the actual
-    //object)
     const postToEdit = this.state.posts.find((post) => post._id === id);
 
     this.setState({
@@ -145,21 +127,24 @@ class MainContainer extends Component{
   closeAndEdit = async (e) => {
     e.preventDefault();
     try {
-      const postToEdit = this.state.postToEdit
-      const editResponse = await fetch('http://localhost:9000/posts/' + this.state.editPostId, {
+      
+      const editPost = await fetch ('http://localhost:9000/posts/' + this.state.editPostId, {
         method: 'PUT',
         credentials: 'include',
-        body: JSON.stringify(postToEdit),
+        body: JSON.stringify(this.state.postToEdit),
         headers:{
           'Content-Type': 'application/json'
         }
       });
-      const editResponseJson = await editResponse.json();
+
+      const parsedResponse = await editPost.json();
       const editedPostArray = this.state.posts.map((post) => {
-        console.log(post.body, 'this is the post body in edit response')
+        // console.log(post.body, 'this is the post body in edit response')
         if(post._id === this.state.editPostId){
-          post.title = this.editResponseJson.data.title;
-          post.body = this.editResponseJson.data.body;
+                  console.log(post)
+
+          post.title = parsedResponse.data.title;
+          post.body = parsedResponse.data.body;
         }
         return post
       });
@@ -177,12 +162,10 @@ class MainContainer extends Component{
     this.setState({
       postToEdit: {
         ...this.state.postToEdit,
-        [e.target.name]: e.target.value
+        [e.target.name]: e.target.value 
       }
     });
   }
-  
-  
   
       render(){
         return (

@@ -20,17 +20,17 @@ class CreatePosts extends Component {
     console.log(this.props, ' this is props in createPostIndex')
   return (
   <div>
-    <h1> this is the new posts page </h1>
+   
     <form onSubmit={this.props.addPost.bind(this, this.state)}>
-      <label>
+      <span>
         <p> Post:</p>
-        <input type="text" name="title" onChange={this.handleChange}/>
-      </label>
-      <label>
+        <input type="text" name="title" onChange={this.handleChange} />
+      </span>
+      <span>
         <p> Create Content: </p>
-        <textarea type="text" name="body" onChange={this.handleChange}/>
-      </label>
-      <input type='Submit' value="Publish Post"/>
+        <textarea type="text" name="body" onChange={this.handleChange} />
+      </span>  
+      <input type='Submit' defaultValue="Publish Post"/>
     </form>
   </div>
 

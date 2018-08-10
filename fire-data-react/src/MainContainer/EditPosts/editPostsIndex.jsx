@@ -1,22 +1,24 @@
-import React, { Component } from 'react';
-
+import React from 'react';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 const EditPosts = (props) =>  {
 
   return (
     <div>
       <h4> Edit Post</h4>
-      <form onSubmit={props.closeAndEdit}>
-        <label>
-          Edit Post Title:
-          <input type="text" name="title" onChange={props.handleFormChange} value={props.postToEdit.title}/>
-        </label>
-        <label>
-          Edit Content:
-          <textarea type="text" name="body" onChange={props.handleFormChange} value={props.postToEdit.body}/>
-        </label>
-        <input type='Submit'/>
-      </form>
+      <Form onSubmit={props.closeAndEdit}>
+        <FormGroup>
+          <Label for="title">Edit Title</Label>
+          <Input type="text" name="title" id="title" onChange={props.handleFormChange} defaultValue={props.postToEdit.title} />
+        </FormGroup>
+        
+        <FormGroup>
+          <Label for="body">Edit Content</Label>
+          <Input type="textarea" name="body" id="body" onChange={props.handleFormChange} defaultValue={props.postToEdit.body} />
+        </FormGroup>
+          
+        <Button type="Submit"/>
+      </Form>
     </div>
 
     )
@@ -24,3 +26,8 @@ const EditPosts = (props) =>  {
 
 export default EditPosts;
 
+
+
+
+      
+        

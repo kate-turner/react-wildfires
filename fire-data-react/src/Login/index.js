@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 class Login extends Component{
     constructor(){
@@ -15,41 +16,44 @@ handleChange = (e) => {
 
 handleSubmit = (e) => {
     e.preventDefault()
+
+    this.props.login(this.state.username);
     //we are calling the login function that we created in App.js, and we sent down as props in order to lift our "state"
-    const loginResponse = await fetch('http://localhost:9000/auth/login', {
-      method: 'POST',
-      body: JSON.stringify(this.state),
-      headers:{
-        'Content-Type': 'application/json'
-        }
-    });
+    // const loginResponse = await fetch('http://localhost:9000/auth/login', {
+    //   method: 'POST',
+    //   body: JSON.stringify(this.state),
+    //   headers:{
+    //     'Content-Type': 'application/json'
+    //     }
+    // });
 
-    const parsedResponse = await loginResponse.json();
-    console.log(parsedResponse, " ***this is response from our express api")
-    //model is talking to the 
+    // const parsedResponse = await loginResponse.json();
+    // console.log(parsedResponse, " ***this is response from our express api")
+    // //model is talking to the 
     
-    if(parsedResponse.data === 'login successful'){ 
-      //'login successful' message comes from authController
+    // if(parsedResponse.data === 'login successful'){ 
+    //   //'login successful' message comes from authController
 
-      this.props.history.push('/posts');
+    //   this.props.history.push('/posts');
       //react's version of redirect
-    }
-}
+//     }
+ }
 
     render(){
-        //console.log(this.state, " this is state")
-        return(
-
-            <form onSubmit={this.handleSubmit}>
-            <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.handleChange}/>
-            <input type="password" name="password"  placeholder="password"  value={this.state.password} onChange={this.handleChange}/>
-            <input type="submit" value="Submit"/>
-            </form>
-            )
-    }
+        return (
+            <Form inline onSubmit={this.handleSubmit}>
+            <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+                <Label for="username" className="mr-sm-2"></Label>
+                <Input type="text" name="username" id="username" placeholder="Username" value={this.state.username} onChange={this.handleChange} />
+            </FormGroup>
+            <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+                <Label for="Password" className="mr-sm-2"></Label>
+                <Input type="password" name="password" id="Password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
+            </FormGroup>
+            <Button>Submit</Button>
+            </Form>
+        );
+        }    
 };
-
-
-
 
 export default Login;

@@ -4,6 +4,7 @@ import MapsData from './MapsData';
 import Posts from './Posts/postsIndex';
 import CreatePosts from './CreatePosts/createPostIndex';
 import EditPosts from './EditPosts/editPostsIndex';
+import { Container, Row, Col } from 'reactstrap';
 
 
 
@@ -169,31 +170,41 @@ class MainContainer extends Component{
   
       render(){
         return (
+          <Container>
+            <Row>
 
-            <div className="row">
-
-            
-            <div className="col-md-6 qCont">
+            <Col md="6">
             <div className="mapContainer">
             <MapsData firesData={this.state.firesData} />
             </div>
-            </div>
-            
-            
-            <div className="col-md-6 qCont">
+            </Col>
+
+            <Col xs="6">
             <div className="fireContainer">
-              <FireList firesData={this.state.firesData} />
+            <FireList firesData={this.state.firesData} />
             </div>
-            </div> 
+            </Col>
+            </Row><br/><br/>
 
-            <div>
-              <Posts posts={this.state.posts} deletePosts={this.deletePosts} showModal={this.showModal} /> 
-              <CreatePosts addPost={this.addPost}/>
-
-              {this.state.showEdit ? <EditPosts closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} postToEdit={this.state.postToEdit}/> : null}
-            </div>
             
-            </div>
+            
+            
+          
+            <Row>
+            <Col md="6" className="posts">
+              <Posts posts={this.state.posts} deletePosts={this.deletePosts} showModal={this.showModal} /> 
+            </Col>
+            
+            <Col xs="6" className="posts2"><br/><br/>
+              <CreatePosts addPost={this.addPost}/>
+            </Col>
+            </Row>
+
+           
+              {this.state.showEdit ? <EditPosts closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} postToEdit={this.state.postToEdit}/> : null}
+          </Container>
+        
+            
         )
       }
 } 

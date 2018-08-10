@@ -1,12 +1,73 @@
-
-
-body {
- background: pink;
-  margin: 0px auto;
-  text-align: center;
-  font-size: 10px;
+.list-group{
+    max-height: 300px;
+    margin-bottom: 10px;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
+.list-group-item{
+  list-style-type: none;
+}
+
+#result_panel{
+  height: 310px;
+  width: 200px;
+  text-align: center;
+  margin-top: 50px;
+}
+#id_panel{
+  height: 400px;
+  width: 350px;
+}
+#post_panel {
+  background-color:  #f2f9ec;
+}
+
+.btn {
+  margin: 5px;
+}
+
+.createPost{
+background-color: #ffdb99;
+padding-bottom: 20px;
+height: 250px;
+width: 200px;
+}
+label {
+  margin: 10px;
+  font-size: 20px;
+}
+
+
+.container {
+  background-color:  #e6f5ff;
+  padding-bottom: 15px;
+  justify-content: center;
+}
+
+.posts2 {
+  text-align: center;
+  align-self: right;
+  justify-content: center;
+  border-color: #bfdf9f;
+
+
+}
+
+.posts {
+ 
+  text-align: center;
+  display: inline-block;
+  width: 100px;
+  justify-content: center;
+  
+}
+.row {
+  
+  flex-direction: row;
+  justify-content: center;
+
+}
 
 
 .app {
@@ -14,15 +75,32 @@ body {
 }
 
 .mapContainer {
-   width: 400px;
-   height: 400px;
-   margin: 100px;
+  text-align: center;
+  width: 260px;
+   height: 50%;
+   width: 50%;
+
+   margin: 30px;
+   flex-direction: row;
+}
+.fireContainer {
+ 
+  align-items: center;
+  margin-left: 100px;
+  text-align: center;
+  width: 260px;
+  /*background-color: pink;*/
+
+}
+.post-span {
+  font-size: 25px;
+}
+.post-body {
+  font-size: 16px;
+  color: red;
+}
+p{
+ font-family: 'Lato', sans-serif;
 }
 
-.quakeContainer {
 
-}
-
-.rows {
-
-}

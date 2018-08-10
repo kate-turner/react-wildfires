@@ -4,6 +4,7 @@ import MainContainer from './MainContainer';
 import Login from "./Login";
 import NavComponent from './StrapComponents/NavComponent';
 import './App.css';
+
 import {Route, Switch} from 'react-router-dom';
 
 const My404 = () => {
@@ -13,6 +14,12 @@ const My404 = () => {
       </div>
   )
 }
+
+import { Container, Row, Col } from 'reactstrap';
+<style>
+@import url('https://fonts.googleapis.com/css?family=Lato');
+</style>
+
 
 class App extends Component {
   constructor(){
@@ -38,17 +45,12 @@ login = (username) => {
   render() {
     console.log(this.state, ' inside of app component')
     return (
-      <div className="container-fluid">
-        
-      <div>
+    <Container>
+      {this.state.loggedIn ? <MainContainer username={this.state.username}/> : <Login login={this.login}/>}
       <NavComponent />
-      </div>
-
-       <div className="row">
-       {this.state.loggedIn ? <MainContainer username={this.state.username}/> : <Login login={this.login}/>}
-       </div>
-      </div>
-  
+        <MainContainer/>
+    </Container>
+      
     );
   }
 }

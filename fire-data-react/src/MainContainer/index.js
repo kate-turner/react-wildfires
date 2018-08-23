@@ -44,7 +44,7 @@ class MainContainer extends Component{
   }
 
     getFires = async() => {
-      const fireAPI = 'http://api.aerisapi.com/fires/closest?p=denver,co&filter=critical&radius=600miles&from=+2hours&limit=50&&client_id=u42Dr3u5idKSLZQgXmBgx&client_secret=Ir3uVmVdUSDwMRHYVZIcalMRNwFIM1CdsVm3Rcis';
+      const fireAPI = 'https://api.aerisapi.com/fires/closest?p=denver,co&filter=critical&radius=600miles&from=+2hours&limit=50&&client_id=u42Dr3u5idKSLZQgXmBgx&client_secret=Ir3uVmVdUSDwMRHYVZIcalMRNwFIM1CdsVm3Rcis';
       try {
         const fires = await fetch(fireAPI);
         const firesJson = await fires.json();
@@ -57,7 +57,7 @@ class MainContainer extends Component{
     }
 
     getPosts = async () => {
-    const posts = await fetch('http://localhost:9000/posts');
+    const posts = await fetch('https://colorado-on-fire-app.herokuapp.com/posts');
     const postsJson = await posts.json();
     return postsJson;
     }
@@ -67,7 +67,7 @@ class MainContainer extends Component{
       console.log(post, 'from addPost')
     e.preventDefault();
     try {
-        const createdPost = await fetch('http://localhost:9000/posts', {
+        const createdPost = await fetch('https://colorado-on-fire-app.herokuapp.com/posts', {
           method: 'POST',
           body: JSON.stringify(post),
           headers:{
@@ -91,7 +91,7 @@ class MainContainer extends Component{
 
   e.preventDefault();
     try {
-      const deletePosts = await fetch('http://localhost:9000/posts/' + id, {
+      const deletePosts = await fetch('https://colorado-on-fire-app.herokuapp.com/posts/' + id, {
         method: "DELETE",
         credentials: 'include',
         body: JSON.stringify({"id": id}),
@@ -129,7 +129,7 @@ class MainContainer extends Component{
     e.preventDefault();
     try {
       
-      const editPost = await fetch ('http://localhost:9000/posts/' + this.state.editPostId, {
+      const editPost = await fetch ('https://colorado-on-fire-app.herokuapp.com/' + this.state.editPostId, {
         method: 'PUT',
         credentials: 'include',
         body: JSON.stringify(this.state.postToEdit),

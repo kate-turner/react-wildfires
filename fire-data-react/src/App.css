@@ -57,6 +57,21 @@ label {
   justify-content: center;
 }
 
+.edit-posts {
+  text-align: center;
+  align-self: right;
+  justify-content: center;
+  border-color: #bfdf9f;
+  background-color: #ffdb99;
+  padding: 1px;
+  height: 300px;
+  width: 300px;
+  margin-top: 20px;
+
+
+
+}
+
 .posts2 {
   text-align: center;
   align-self: right;

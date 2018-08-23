@@ -1,5 +1,8 @@
 import React from 'react';
 import { Button } from 'reactstrap';
+<style>
+@import url('https://fonts.googleapis.com/css?family=Lato');
+</style>
 
 const Posts = (props) => {
   console.log(props, 'this is props in post index');
@@ -15,6 +18,9 @@ const Posts = (props) => {
   });
 
   return (
+
+ 
+
       <div class="panel panel-primary" id="post_panel">
         <div class="panel-heading">
           <h3 class="panel-title">Posts</h3>
@@ -27,6 +33,7 @@ const Posts = (props) => {
             </ul>
         </div>
         </div>
+
     )
 
 };

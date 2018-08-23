@@ -4,8 +4,13 @@ import MainContainer from './MainContainer';
 import Login from "./Login";
 import NavComponent from './StrapComponents/NavComponent';
 import './App.css';
-
 import {Route, Switch} from 'react-router-dom';
+import { Container, Row, Col } from 'reactstrap';
+<style>
+@import url('https://fonts.googleapis.com/css?family=Lato');
+</style>
+
+
 
 const My404 = () => {
   return (
@@ -15,10 +20,7 @@ const My404 = () => {
   )
 }
 
-import { Container, Row, Col } from 'reactstrap';
-<style>
-@import url('https://fonts.googleapis.com/css?family=Lato');
-</style>
+
 
 
 class App extends Component {
@@ -28,10 +30,10 @@ class App extends Component {
   this.state = {
     loggedIn: false,
     username:  ""
-    }//closing this.state object
-  } //closing constructor
+    }
+  } 
 
-  //**create login method (function) that will hold "setState" object -->in index.js the handle Change method holds "setState" object
+
 login = (username) => {
   console.log('login function in app is working', username);
 
@@ -46,9 +48,10 @@ login = (username) => {
     console.log(this.state, ' inside of app component')
     return (
     <Container>
-      {this.state.loggedIn ? <MainContainer username={this.state.username}/> : <Login login={this.login}/>}
+      
       <NavComponent />
-        <MainContainer/>
+      {this.state.loggedIn ? <MainContainer username={this.state.username}/> : <Login login={this.login}/>}
+       
     </Container>
       
     );
